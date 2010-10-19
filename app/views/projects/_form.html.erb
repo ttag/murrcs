@@ -23,6 +23,13 @@
     <%= f.label :start_date %><br />
     <%= f.date_select :start_date %>
   </div>
+
+<% story_point = StoryPointFormat.find(:all, :order=>:story_point_format)%>
+<p>story point format:
+  <%= f.collection_select :story_point_format_id , story_point, :id, :story_point_format %>
+</p>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
