@@ -38,5 +38,7 @@ module Murrcs
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.3.min.js', 'jquery-ujs/src/rails']
   end
 end
