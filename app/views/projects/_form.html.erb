@@ -24,14 +24,14 @@
     <%= f.date_select :start_date %>
   </div>
 
+<div class="field">
 <% story_point = StoryPointFormat.find(:all, :order=>:story_point_format)%>
-<p>story point format:
+story point format <br />
   <%= f.collection_select :story_point_format_id , story_point, :id, :story_point_format,{:prompt => 'Select format'} %>
 
- 
-</p>
+</div>
 
-
+<br />
   <div class="actions">
     <%= f.submit %>
   </div>
