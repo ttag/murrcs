@@ -54,3 +54,9 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+ #Calendar {
+
+    background-image:url("../images/calendar.png");
+    background-position:right center;
+    background-repeat:no-repeat; }
