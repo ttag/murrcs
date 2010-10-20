@@ -26,7 +26,9 @@
 
 <% story_point = StoryPointFormat.find(:all, :order=>:story_point_format)%>
 <p>story point format:
-  <%= f.collection_select :story_point_format_id , story_point, :id, :story_point_format %>
+  <%= f.collection_select :story_point_format_id , story_point, :id, :story_point_format,{:prompt => 'Select format'} %>
+
+ 
 </p>
 
 
