@@ -54,6 +54,8 @@ Murrcs::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
   root :to => "projects#index"
+  devise_for :users
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
