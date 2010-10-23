@@ -40,5 +40,7 @@ module Murrcs
     config.filter_parameters += [:password]
 
 config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.3.min.js', 'jquery-ujs/src/rails']
+
+ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   end
 end
