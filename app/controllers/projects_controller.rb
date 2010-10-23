@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
 
   def index
+ debugger
     @projects = Project.all
 
     respond_to do |format|

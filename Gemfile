@@ -30,3 +30,5 @@ gem 'mysql2'
 # end
 
 gem 'devise', '1.1.3'
+gem 'ruby-debug','0.10.3'
+gem 'ruby-debug-base', '0.10.3'
