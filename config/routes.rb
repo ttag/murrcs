@@ -2,6 +2,7 @@ Murrcs::Application.routes.draw do
   devise_for :users
 
   resources :projects
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,7 +55,6 @@ Murrcs::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
   root :to => "projects#index"
-  devise_for :users
 
   # See how all your routes lay out with "rake routes"
 
