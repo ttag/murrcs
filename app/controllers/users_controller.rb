@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
+
   def index
     @users = User.all
 
@@ -25,10 +26,11 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+puts "######### new user #####"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
+      
     end
   end
 
@@ -44,8 +46,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to("/users", :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
+        puts "#########"
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }

@@ -19,7 +19,16 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="actions">
+
+<div class="field">
+<% roles = Roles.find(:all)%>
+Role <br />
+  <%= f.collection_select :role_id , roles, :id, :title,{:prompt => 'Select role'} %>
+
+</div>
+
+
+
     <%= f.submit %>
-  </div>
+
 <% end %>
