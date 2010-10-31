@@ -12,5 +12,6 @@ class User < ActiveRecord::Base
 
 
   devise :database_authenticatable, :authentication_keys => [:login]
-  has_one :roles, :class_name => "Roles" 
+  has_one :roles, :class_name => "Roles"
+  belongs_to :project, :class_name => "project"
 end

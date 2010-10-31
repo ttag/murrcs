@@ -36,6 +36,7 @@ puts "######### new user #####"
 
   # GET /users/1/edit
   def edit
+    @project = Project.find(params[:id])
     @user = User.find(params[:id])
   end
 
@@ -59,11 +60,13 @@ puts "######### new user #####"
   # PUT /users/1
   # PUT /users/1.xml
   def update
+  
+    project = session["project"]
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+      if @user.update_attributes(params[:user]) and @user.update_attribute(:project_id,project)
+        format.html { redirect_to("/projects/#{project}", :notice => 'User added in project') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

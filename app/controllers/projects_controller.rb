@@ -14,8 +14,12 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
+    
     @project = Project.find(params[:id])
+    @users = User.find(:all,:conditions => "project_id IS NOT NULL")
+    @users_excluded = User.find(:all,:conditions => "project_id IS NULL")
 
+    session["project"]=@project.id
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }

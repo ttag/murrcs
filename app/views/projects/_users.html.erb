@@ -1,0 +1,69 @@
+<h1>User list in this project</h1>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+
+  <tr>
+    <td><%= user.login %></td>
+    <td><%= user.email %></td>
+
+     <% @user_role = User.find(user.id) %>
+     <% @role = Roles.find(:all,:conditions => ["id =?",@user_role.role_id])%>
+  
+    <% @role.each do |role| %>
+    <td><%= role.title %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+
+
+<h1>User that are not added in this project</h1>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users_excluded.each do |user| %>
+
+  <tr>
+    <td><%= user.login %></td>
+    <td><%= user.email %></td>
+
+     <% @user_role = User.find(user.id) %>
+
+  <%= form_for(@user_role) do |f| %>
+
+<% roles = Roles.find(:all)%>
+
+<td><%= f.collection_select :role_id , roles, :id, :title,{:prompt => 'Select role'} %> </td>
+
+
+    <td> <%= f.submit "add user"%> </td>
+
+<% end %>
+
+  </tr>
+
+
+
+<% end %>
+</table>
+
+</div>
+
+<br />
+
