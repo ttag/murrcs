@@ -9,7 +9,7 @@
     <th></th>
   </tr>
 
-<% @users.each do |user| %>
+<% @users.each do |user|%>
 
   <tr>
     <td><%= user.login %></td>
@@ -21,6 +21,11 @@
     <% @role.each do |role| %>
     <td><%= role.title %></td>
     <%end%>
+ <%=form_for(user) do |f| %>
+    
+    <td>    <%=f.submit "remove user"%> </td>
+
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -45,8 +50,9 @@
 
      <% @user_role = User.find(user.id) %>
 
-  <%= form_for(@user_role) do |f| %>
-
+  <%= form_for (user) do |f|%>
+  <%= puts "here i m" %>
+    <%session['user_status']%>
 <% roles = Roles.find(:all)%>
 
 <td><%= f.collection_select :role_id , roles, :id, :title,{:prompt => 'Select role'} %> </td>
@@ -63,7 +69,6 @@
 <% end %>
 </table>
 
-</div>
 
 <br />
 

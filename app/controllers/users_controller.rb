@@ -65,13 +65,21 @@ puts "######### new user #####"
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user]) and @user.update_attribute(:project_id,project)
+     if session['user_status'].nil? and @user.update_attribute(:project_id,project)
+
+       format.html { redirect_to("/projects/#{project}", :notice => 'User added in project...') }
+        format.xml  { head :ok }
+        
+      elsif session['user_status']== 'remove' and @user.update_attributes(params[:user]) and @user.update_attribute(:project_id, nil)
+
         format.html { redirect_to("/projects/#{project}", :notice => 'User added in project') }
         format.xml  { head :ok }
       else
+
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+      
     end
   end
 
@@ -86,4 +94,27 @@ puts "######### new user #####"
       format.xml  { head :ok }
     end
   end
+
+ def update_project
+
+    project = session["project"]
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+     
+     
+      if @user.update_attributes(params[:user]) and @user.update_attribute(:project_id, nil)
+
+        format.html { redirect_to("/projects/#{project}", :notice => 'User added in project') }
+        format.xml  { head :ok }
+      else
+
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+
+    end
+  end
+
+
 end

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :token_authenticatable, :confirmable, :lockable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_id, :project_id, :login 
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role_id, :project_id, :login, :user
 
 
   devise :database_authenticatable, :authentication_keys => [:login]
