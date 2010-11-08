@@ -65,14 +65,14 @@ puts "######### new user #####"
     @user = User.find(params[:id])
 
     respond_to do |format|
-     if session['user_status'].nil? and @user.update_attribute(:project_id,project)
+      if request.params[:commit] == "add user"  and @user.update_attribute(:project_id,project) and @user.update_attributes(params[:user])
 
        format.html { redirect_to("/projects/#{project}", :notice => 'User added in project...') }
         format.xml  { head :ok }
         
-      elsif session['user_status']== 'remove' and @user.update_attributes(params[:user]) and @user.update_attribute(:project_id, nil)
+      elsif request.params[:commit] == "remove user" and @user.update_attribute(:project_id, nil)
 
-        format.html { redirect_to("/projects/#{project}", :notice => 'User added in project') }
+        format.html { redirect_to("/projects/#{project}", :notice => 'User removed from project') }
         format.xml  { head :ok }
       else
 
@@ -103,9 +103,9 @@ puts "######### new user #####"
     respond_to do |format|
      
      
-      if @user.update_attributes(params[:user]) and @user.update_attribute(:project_id, nil)
+      if @user.update_attribute(:project_id, nil)
 
-        format.html { redirect_to("/projects/#{project}", :notice => 'User added in project') }
+        format.html { redirect_to("/projects/#{project}", :notice => 'removed') }
         format.xml  { head :ok }
       else
 
