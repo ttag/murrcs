@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Murrcs</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+
+  <script type="text/javascript">
+$(document).ready(function() {
+   // do stuff when DOM is ready; in our case hello world
+ $("#hw").click(function() {
+  alert("Hello world!");
+ });
+});
+</script>
+
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

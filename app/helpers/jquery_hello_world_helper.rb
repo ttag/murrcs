@@ -1,0 +1,2 @@
+module JqueryHelloWorldHelper
+end
