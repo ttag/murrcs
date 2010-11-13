@@ -1,5 +1,7 @@
 Murrcs::Application.routes.draw do
-  resources :jquery_hello_world
+  get "users/show"
+
+  resources :jquery_hello_world, :users
   get "jquery_hello_world/index"
 
   # The priority is based upon order of creation:

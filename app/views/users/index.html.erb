@@ -1,0 +1,32 @@
+<ul id="list1" >
+
+  <b>name </b>
+  
+
+<% @users.each do |user| %>
+  
+   <li><div>
+    <td><%= user.name%></td>
+    </div></li>
+
+<% end %>
+
+</ul>
+
+
+
+<ul id="list2">
+
+  <b>name </b>
+
+
+<% @users_no_role.each do |user| %>
+
+   <li><div>
+    <td><%= user.name%></td>
+    </div></li>
+
+<% end %>
+
+</ul>
+
