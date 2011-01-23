@@ -1,4 +1,6 @@
 Murrcs::Application.routes.draw do
+  resources :clubs
+
   devise_for :users
 
   # The priority is based upon order of creation:
