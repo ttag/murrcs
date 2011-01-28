@@ -28,3 +28,5 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem 'devise', '1.1.3'
+
