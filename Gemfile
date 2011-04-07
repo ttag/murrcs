@@ -28,3 +28,4 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "acts_as_list"
