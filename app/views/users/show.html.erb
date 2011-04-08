@@ -1,5 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email address:</b>
+  <%= @user.email %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<h3>
+  Projects I Own
+</h3>
+  <% if @user_projects.empty? %>
+    You do not yet own any projects.
+  <% else %>
+
+    <% for user_project in @user_projects %>
+     <ul id="projects_owned">
+       <% if user_project.role.name == 'owner' %>
+        <li> <%= link_to user_project.project.name , project_path(user_project.project)  %> </li>
+       <% end %>
+     </ul>
+    <% end %>
+
+  <% end %>
